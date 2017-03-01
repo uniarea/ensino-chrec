@@ -1,0 +1,94 @@
+#calculate {
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+#bottomTable {
+    padding-top: 15px;
+}
+
+#inputError {
+    display: none;
+}
+
+.text-red {
+    color: rgb(248, 43, 43);
+}
+
+.grade {
+    width: 50px;
+}
+
+.no-bullets {
+    list-style-type: none;
+}
+
+.jumbotron {
+    background-color: rgb(39, 39, 39);
+}
+.jumbotron h1 {
+    color: white;
+    font-size: 50px;
+}
+.jumbotron h1 small {
+    color: white;
+}
+.jumbotron p {
+    color: #D3D3D4;
+}
+
+#side-note {
+    padding-top: 40px;
+}
+
+footer {
+    padding: 20px;
+    background-color: rgb(39, 39, 39);
+    color: white;
+}
+
+footer a {
+    color: white;
+}
+
+footer a:hover {
+    color: #eee;
+}
+
+.navbar-default {
+    background-color: #fff;
+}
+
+.navbar-brand span, .navbar-brand i, #bs-example-navbar-collapse-1 a {
+    color: rgb(39, 39, 39);
+    font-weight: bold;
+}
+
+.navbar-brand .text-red {
+    color: rgb(248, 43, 43);
+}
+
+.navbar {
+    margin-bottom:0;
+}
+
+.btn {
+    font-weight: bold;
+}
+
+b[role=help], span[role=help] {
+    cursor:help;
+}
+
+
+/* Vertically center text inside a div (taken from CSS-tricks.com) */
+.vertically-center {
+  display: table;
+  margin-top: 20px;
+}
+.vertically-center p {
+  display: table-cell;
+  margin: 0;
+  padding: 20px;
+  vertical-align: middle;
+}

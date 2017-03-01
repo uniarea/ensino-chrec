@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <meta name="description" content="Página desenvolvida com o intuito de ajudar alunos de final de secundário no cálculo da nota de entrada com a qual se candidatam ao Ensino Superior, tendo em conta
+        as notas finais das disciplinas e os respetivos exames."/>
+        <!--  The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags  -->
+        <link hreflang="pt-pt"/>
+
+        <!--  Facebook Meta Tags  -->
+        <meta property="fb:app_id" content="1197350313623139"/>
+        <meta property="og:url" content="https://uniarea.github.io/ensino-chrec"/>
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Simulador de Candidatura Uniarea"/>
+        <meta property="og:description" content="Página desenvolvida com o intuito de ajudar alunos de final de secundário no cálculo da nota de entrada com a qual se candidatam ao Ensino Superior, tendo em conta as notas finais das disciplinas e os respetivos exames"/>
+        <meta property="og:image" content="https://uniarea.github.io/img/banner.png"/>
+        <meta property="og:image:secure_url" content="https://uniarea.github.io/img/banner.png"/>
+        <meta property="og:image:width" content="1437"/>
+        <meta property="og:image:height" content="752"/>
+        <meta property="og:locale" content="pt_PT"/>
+
+        <!-- Favicons -->
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+        <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+        <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+        <link rel="manifest" href="/manifest.json">
+        <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#F82B2B">
+        <meta name="apple-mobile-web-app-title" content="Simulador Uniarea">
+        <meta name="application-name" content="Simulador Uniarea">
+        <meta name="msapplication-TileColor" content="#b91d47">
+        <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+
+        <!--  Google Android Tab Color  -->
+        <meta name="theme-color" content="#272727"/>
+
+        <title>Ensino Científico-Humanístico Recorrente · Simulador de Candidatura Uniarea</title>
+
+        <!--  Bootstrap & CSS -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link href="css/extra.css" rel="stylesheet"/>
+
+        <!-- Material Icons-->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!--  Font Awesome -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"/>
+
+        <!--  HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries  -->
+        <!--  WARNING: Respond.js doesn't work if you view the page via file://  -->
+        <!-- [if lt IE 9]>
+            <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+            <![endif] -->
+    </head>
+    <body>
+
+        <!--  Navbar  -->
+        <nav class="navbar navbar-default">
+            <div class="container">
+                <!--  Brand and toggle get grouped for better mobile display  -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="./index.html" class="navbar-brand" href"="" "=""><i class="fa fa-calculator" aria-hidden="true"></i> <span>Uni<span class="text-red">area</span></span></a>
+                </div>
+
+
+                <!--  Collect the nav links, forms, and other content for toggling  -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-share-square-o" aria-hidden="true"></i> Partilhar <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a target="_blank" href="https://www.facebook.com/dialog/share?app_id=1197350313623139&display=popup&href=https://uniarea.github.io&redirect_uri=https://uniarea.github.io"><i class="fa fa-facebook-square" aria-hidden="true"></i> Facebook</a></li>
+                                <li><a target="_blank" href="https://twitter.com/home?status=N%C3%A3o%20sabes%20como%20calcular%20a%20tua%20Nota%20de%20Candidatura%20ao%20Ensino%20Superior?%20Experimenta%20o%20https%3A//uniarea.github.io"><i class="fa fa-twitter-square" aria-hidden="true"></i> Twitter</a></li>
+                                <li><a target="_blank" href="https://plus.google.com/share?url=https%3A//uniarea.github.io"><i class="fa fa-google-plus-square" aria-hidden="true"></i> Google+</a></li>
+                                <li><a target="_blank" href="mailto:?&body=N%C3%A3o%20sabes%20como%20calcular%20a%20tua%20Nota%20de%20Candidatura%20ao%20Ensino%20Superior?%20Experimenta%20o%20https%3A//uniarea.github.io"><i class="fa fa-envelope" aria-hidden="true"></i> Email</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="" class="clip"><i class="fa fa-clipboard" aria-hidden="true"></i> Copiar Link</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!--  /.navbar-collapse  -->
+            </div><!--  /.container-fluid  -->
+        </nav>
+
+
+        <div class="jumbotron">
+            <div class="container">
+                <h1>
+                    Simulador de Candidatura Uni<span class="text-red">area</span><br>
+                    <small><i class="fa fa-pencil"></i> Ensino Científico-Humanístico Recorrente</small>
+                </h1>
+            </div>
+        </div>
+        <div class="container">
+            <h2>Instruções</h2>
+            <p>
+            <ol>
+                <li>Introduz a informação relativa às tuas notas nas disciplinas (0-20) e exames (0-200) e quais as provas de ingresso do curso que te pretendes candidatar.</li>
+                <li>Depois de preencheres tudo, carrega em <strong>Calcular</strong> e serão mostrados os teus resultados.</li>
+                <li><i>Opcional:</i> Grava o teu resultado carregando em <strong>Guardar</strong> e este será transferido como um ficheiro de texto.</li>
+            </ol>
+            </p>
+
+            <p>
+            <strong>Nota:</strong> existem várias informações <u>cruciais</u> assinaladas com <b href="#" data-placement="top" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Exemplo de uma ajuda."><sup>(?)</sup></b> que deves ler com atenção.
+            </p>
+
+            <p>
+            Em caso de dúvidas no preenchimento, não hesites: usa o <a href='http://uniarea.com/forum/index.php?threads%2Fc%C3%A1lculo-da-nota-de-candidatura.472%2F'><strong>fórum</strong></a> para colocar as tuas dúvidas! Em caso de possíveis erros de cálculo, envia uma mensagem privada ao <a href='http://uniarea.com/forum/index.php?members/cyrilico.1408/'><strong>cyrilico</strong></a> (também no fórum) com uma descrição o mais detalhada possível do erro.
+            </p>
+
+            <p>
+            Se estás num telemóvel ou tablet, aconselhamos-te a utilizar a ferramenta em modo <strong>horizontal</strong> <sub><i class="material-icons">stay_current_landscape</i></sub>.
+            </p>
+
+            <br/>
+
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>10º Ano</th>
+                        <th>11º Ano</th>
+                        <th>12º Ano</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Português</td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade0[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade0[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade0[]" value="10"/></td>
+                    </tr>
+                    <tr>
+                        <td>Filosofia</td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade1[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade1[]" value="10"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="A disciplina de dois anos de uma língua estrangeira. Exemplos: Inglês, Espanhol, Francês"><sup>(?)</sup></b>Língua Estrangeira</td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade2[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade2[]" value="10"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>Educação Física</td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
+                    </tr>
+                    <tr>
+                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="A disciplina de três anos específica de cada curso. Exemplos: Matemática A, História A, Desenho A"><sup>(?)</sup></b>Trienal Específica</td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
+                    </tr>
+                    <tr>
+                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de dois anos específica de cada curso. Exemplos: Físico-Química A, Economia A, Geografia"><sup>(?)</sup></b>Bienal 1</td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade5[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade5[]" value="10"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de dois anos específica de cada curso. Exemplos: Biologia e Geologia, Geometria Descritiva, MACS, Literatura"><sup>(?)</sup></b>Bienal 2</td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade6[]" value="10"/></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade6[]" value="10"/></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de último ano específica de cada curso. Exemplos: Biologia, Física, Aplicações Informáticas B, Psicologia, Sociologia, Geologia"><sup>(?)</sup></b>Opção 1</td>
+                        <td></td>
+                        <td></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade7[]" value="10"/></td>
+                    </tr>
+                    <tr>
+                        <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="A segunda disciplina de último ano específica de cada curso. Exemplos: Biologia, Física, Aplicações Informáticas B, Psicologia, Sociologia, Geologia"><sup>(?)</sup></b>Opção 2</td>
+                        <td></td>
+                        <td></td>
+                        <td><input class="grade" min="1" max="20" type="number" name="grade8[]" value="10"/></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="mandatoryExams">
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <table class="table table-striped">
+                              <caption>
+                                Exames obrigatórios
+                              </caption>
+                                <thead>
+                                    <tr>
+                                        <th>Disciplina</th>
+                                        <th>Exame 1ª Fase</th>
+                                        <th>Exame 2ª Fase</th>
+                                        <th>Prova de ingresso</th>
+                                    </tr>
+                                </thead>
+                                <tr>
+                                    <td>Português</td>
+                                    <td>
+                                        <input class="grade" type="number" min="0" max="200" name="exam0[]">
+                                    </td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam1[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam0[]" hidden>
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="access0[]" value="yes"/> Sim
+                                        <input type="radio" name="access0[]" value="no" checked/> Não
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Trienal</td>
+                                    <td>
+                                        <input class="grade" type="number" min="0" max="200" name="exam1[]">
+                                    </td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam1[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam1[]" hidden>
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="access1[]" value="yes"/> Sim
+                                        <input type="radio" name="access1[]" value="no" checked/> Não
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Bienal I</td>
+                                    <td>
+                                        <input class="grade" type="number" min="0" max="200" name="exam2[]">
+                                    </td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam2[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam2[]" hidden>
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="access2[]" value="yes"/> Sim
+                                        <input type="radio" name="access2[]" value="no" checked/> Não
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Bienal II</td>
+                                    <td>
+                                        <input class="grade" type="number" min="0" max="200" name="exam3[]">
+                                    </td>
+                                    <td>
+                                        <input class="checker" type="checkbox" name="exam3[]">
+                                        <input class="grade" type="number" min="0" max="200" name="exam3[]" hidden>
+                                    </td>
+                                    <td>
+                                        <input type="radio" name="access3[]" value="yes"/> Sim
+                                        <input type="radio" name="access3[]" value="no" checked/> Não
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                          <table class="table table-striped">
+                            <caption>
+                              Exames extra (realizados apenas para prova de ingresso)
+                            </caption>
+                              <thead>
+                                  <tr>
+                                      <th>Realizou exame?</th>
+                                      <th>Exame 1ªFase</th>
+                                      <th>Exame 2ª Fase</th>
+                                  </tr>
+                              </thead>
+                              <tr>
+                                  <td>
+                                      <input type="radio" name="access4[]" value="yes"/> Sim
+                                      <input type="radio" name="access4[]" value="no" checked/> Não
+                                  </td>
+                                  <td>
+                                      <input class="checker" type="checkbox" name="exam4[]">
+                                      <input class="grade" type="number" min="0" max="200" name="exam4[]" hidden>
+                                  </td>
+                                  <td>
+                                      <input class="checker" type="checkbox" name="exam4[]">
+                                      <input class="grade" type="number" min="0" max="200" name="exam4[]" hidden>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      <input type="radio" name="access5[]" value="yes"/> Sim
+                                      <input type="radio" name="access5[]" value="no" checked/> Não
+                                  </td>
+                                  <td>
+                                      <input class="checker" type="checkbox" name="exam5[]">
+                                      <input class="grade" type="number" min="0" max="200" name="exam5[]" hidden>
+                                  </td>
+                                  <td>
+                                      <input class="checker" type="checkbox" name="exam5[]">
+                                      <input class="grade" type="number" min="0" max="200" name="exam5[]" hidden>
+                                  </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                      <input type="radio" name="access6[]" value="yes"/> Sim
+                                      <input type="radio" name="access6[]" value="no" checked/> Não
+                                  </td>
+                                  <td>
+                                      <input class="checker" type="checkbox" name="exam6[]">
+                                      <input class="grade" type="number" min="0" max="200" name="exam6[]" hidden>
+                                  </td>
+                                  <td>
+                                      <input class="checker" type="checkbox" name="exam6[]">
+                                      <input class="grade" type="number" min="0" max="200" name="exam6[]" hidden>
+                                  </td>
+                              </tr>
+                          </table>
+                        </div>
+                    </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 text-center" id="calculate">
+                <h5><span href="#" data-placement="top" data-toggle="tooltip" role="help" title="" data-original-title="Valor em percentagem correspondente ao peso que as provas de ingresso têm na nota de candidatura do curso que te pretendes candidatar."><sup>(?)</sup></span>Peso das Provas de Ingresso</h5>
+                <input class="grade" type="number" id="accessPercentage" min="0" max="100" value="50"/> <br/>
+                <br/>
+                <!-- Button trigger modal -->
+                <button type="button" onclick="displayScores()" class="btn btn-default btn-lg" data-toggle="modal" data-target="#myModal">
+                    <i class="fa fa-calculator"></i> Calcular
+                </button>
+            </div>
+
+
+
+        </div> <!--  end container -->
+
+
+        <!-- Results Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Resultados</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="inputError">
+                            <div class="alert alert-danger" role="alert">Introduziste valores que não são coerentes. Corrige o(s) seguinte(s) erro(s) e calcula novamente:
+                                <ul id="inputErrorText"></ul>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <p>
+                            <strong>Média das Provas de Ingresso (<span id="accessExamsWeight"></span>%) </strong>
+                            <ul>
+                                <li><strong>1ª Fase:</strong> <span id="accessScoreFirstPhase"></span> <i>pontos</i></li>
+                                <li><strong>2ª Fase:</strong> <span id="accessScoreSecondPhase"></span> <i>pontos</i></li>
+                            </ul>
+                            </p>
+                            <h3>Cursos Gerais</h3>
+                            <ul class="no-bullets">
+                                <p>
+                                <strong>Média de Ensino Secundário (<span class="internalScoreWeight"></span>%) </strong>
+                                <ul>
+                                    <li><strong>1ª Fase:</strong> <span id="internalScoreFirstPhase"></span> <i>pontos</i></li>
+                                    <li><strong>2ª Fase:</strong> <span id="internalScoreSecondPhase"></span> <i>pontos</i></li>
+                                </ul>
+                                </p>
+                                <p>
+                                <strong>Nota de Candidatura ao Ensino Superior</strong>
+                                <ul>
+                                    <li><strong>1ª Fase:</strong> <span id="finalScoreFirstPhase"></span> <i>pontos</i></li>
+                                    <li><strong>2ª Fase:</strong> <span id="finalScoreSecondPhase"></span> <i>pontos</i></li>
+                                </ul>
+                                </p>
+                            </ul>
+                            <h3>Área de Desporto</h3>
+                            <ul class="no-bullets">
+                                <p>
+                                <strong>Média de Ensino Secundário (<span class="internalScoreWeight"></span>%) </strong>
+                                <ul>
+                                    <li><strong>1ª Fase:</strong> <span id="internalScoreSportFirstPhase"></span> <i>pontos</i></li>
+                                    <li><strong>2ª Fase:</strong> <span id="internalScoreSportSecondPhase"></span> <i>pontos</i></li>
+                                </ul>
+                                </p>
+                                <p>
+                                <strong>Nota de Candidatura ao Ensino Superior</strong>
+                                <ul>
+                                    <li><strong>1ª Fase:</strong> <span id="finalScoreSportFirstPhase"></span> <i>pontos</i></li>
+                                    <li><strong>2ª Fase:</strong> <span id="finalScoreSportSecondPhase"></span> <i>pontos</i></li>
+                                </ul>
+                                </p>
+                            </ul>
+                        </div>
+                        <p>
+                        <strong>Nota:</strong> Se concluíste o secundário até 2013/2014 (inclusive), as notas que deves considerar deste cálculo são as que contam com Educação Física, independentemente do curso a que te pretendes candidatar.
+                        </p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" onclick="saveScores()"><i class="fa fa-save"></i> Guardar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br/><br/><br/>
+
+        <footer class="footer text-center">
+            <div class="container">
+                <i class="fa fa-code"></i> by <a href="http://antonioalmeida.me"><i class="fa fa-user"></i></a> & <a href="http://cyrilico.github.io"><i class="fa fa-user"></i></a> para a <a href="http://uniarea.com">Uni<span class=text-red>area</span></a>
+            </div>
+        </footer>
+
+        <!--  Google analytics -->
+        <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', 'UA-65760659-3', 'auto');
+ga('send', 'pageview');
+
+        </script>
+
+        <!--  jQuery (necessary for Bootstrap's JavaScript plugins)  -->
+        <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+        <!--  Bootstrap  -->
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- clipboard.js -->
+        <script src="js/clipboard.min.js"></script>
+        <!-- filesaver.js -->
+        <script src="js/FileSaver.min.js"></script>
+        <!--  custom js for calculation  -->
+        <script src="js/script.js" type="text/javascript"></script>
+
+    </body>
+</html>
