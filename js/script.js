@@ -67,7 +67,7 @@ var getMandatoryExams = function(index){
    * there's no need to test for second phase flag because if [3] is set, [1] MUST be set */
   var firstPhase = (totalExams[3] ? Math.max(totalExams[0],totalExams[2]) : totalExams[0]);
   var secondPhase = Math.max(firstPhase, totalExams[2]);
-  
+
   return [firstPhase, secondPhase];
 }
 
@@ -205,9 +205,6 @@ var calculateFinalScoreSport = function() {
     return [firstPhase, secondPhase];
 }
 
-/* HAVEN'T CHANGED ANYTHING BELOW THIS LINE
-  TODO: ADJUST INPUT VERIFICATION */
-
 //Verify input
 var verifyInput = function() {
 
@@ -226,11 +223,12 @@ var verifyInput = function() {
             return parseInt($(elem).val());
         }).get());
 
-        exams.push(getUnitExams(i));
+        if(i < 7)
+          exams.push(getUnitExams(i));
     }
 
     units = steamrollArray(units).filter(function(val) {
-        return val >= 1 && val <= 21 && $.isNumeric(val);
+        return val >= 1 && val <= 20 && $.isNumeric(val);
     })
 
     exams = steamrollArray(exams).filter(function(val) {
@@ -244,13 +242,14 @@ var verifyInput = function() {
     var hasError = false;
     var errors = "";
 
-    // 19 and 36 -> number of input boxes
+    // 19 and 14 -> number of input boxes
     if(units.length != 19) {
         hasError = true;
        errors += "<li>Há pelo menos uma nota de disciplina com um valor inválido.</li>";
     }
 
-    if(exams.length != 36) {
+    if(exams.length != 14) {
+        console.log(exams.length);
         hasError = true;
        errors += "<li>Há pelo menos uma nota de exame com um valor inválido.</li>";
     }
@@ -280,8 +279,8 @@ var displayScores = function() {
 
     var accessExamsScore = calculateAccessScores();
 
-    var internalScores = calculateInternalScores();
-    var internalScoresSport = calculateInternalScoresSport();
+    var internalScores = calculateSpecificInternalScores();
+    var internalScoresSport = calculateSpecificInternalScoresSports();
 
     var finalScore = calculateFinalScore();
     var finalScoreSport = calculateFinalScoreSport();
@@ -310,17 +309,17 @@ var displayScores = function() {
 
 //Save scores to text file
 var saveScores = function(){
-    var results = "CFDs - Classificações Finais das Disciplinas (1ªFase | 2ªFase):\r\n";
+    var results = "CFDs - Classificações Finais das Disciplinas:\r\n";
     var cfds = calculateAllCFDs();
     var subjects = ["Português", "Filosofia", "Língua Estrangeira", "Educação Física", "Trienal Específica", "Bienal I", "Bienal II", "Anual I", "Anual II"];
     //CFDs
     for(var i = 0; i < subjects.length; i++){
-        results += subjects[i] + ": " + cfds[i][0] + " | " + cfds[i][1] + "\r\n";
+        results += subjects[i] + ": " + cfds[i] + "\r\n";
     }
-    results += "\nMédias Finais do Ensino Secundário:\r\n";
+    results += "\nClassificação Final com Efeito de Prosseguimento de Estudos (CFCEPE):\r\n";
     //Final internal score
-    var internalscores = calculateInternalScores();
-    var internalscoresport = calculateInternalScoresSport();
+    var internalscores = calculateSpecificInternalScores();
+    var internalscoresport = calculateSpecificInternalScoresSports();
     for(var j = 0; j < 2; j++){
         results += j+1 + "ª Fase:\r\n";
         results += "Cursos Área Desporto: " + internalscoresport[j] + "\r\n";
