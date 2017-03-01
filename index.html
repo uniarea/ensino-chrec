@@ -208,11 +208,13 @@
                                 <tr>
                                     <td>Português</td>
                                     <td>
-                                        <input class="grade" type="number" min="0" max="200" name="exam0[]">
+                                        <input class="grade" type="number" min="0" max="200" value="0" name="exam0[]">
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam1[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam0[]" hidden>
+                                        <input class="checkerPhase2" type="checkbox" name="exam0[]">
+                                        <input class="grade" type="number" min="0" max="200" value="0" name="exam0[]" hidden>
+                                        <input type="checkbox" name="exam0[]" hidden>
+                                        <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
                                     </td>
                                     <td>
                                         <input type="radio" name="access0[]" value="yes"/> Sim
@@ -222,11 +224,13 @@
                                 <tr>
                                     <td>Trienal</td>
                                     <td>
-                                        <input class="grade" type="number" min="0" max="200" name="exam1[]">
+                                        <input class="grade" type="number" min="0" max="200" value="0" name="exam1[]">
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam1[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam1[]" hidden>
+                                        <input class="checkerPhase2" type="checkbox" name="exam1[]">
+                                        <input class="grade" type="number" min="0" max="200" value="0" name="exam1[]" hidden>
+                                        <input type="checkbox" name="exam1[]" hidden>
+                                        <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
                                     </td>
                                     <td>
                                         <input type="radio" name="access1[]" value="yes"/> Sim
@@ -236,11 +240,13 @@
                                 <tr>
                                     <td>Bienal I</td>
                                     <td>
-                                        <input class="grade" type="number" min="0" max="200" name="exam2[]">
+                                        <input class="grade" type="number" min="0" max="200" value="0" name="exam2[]">
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam2[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam2[]" hidden>
+                                        <input class="checkerPhase2" type="checkbox" name="exam2[]">
+                                        <input class="grade" type="number" min="0" max="200" value="0" name="exam2[]" hidden>
+                                        <input type="checkbox" name="exam2[]" hidden>
+                                        <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
                                     </td>
                                     <td>
                                         <input type="radio" name="access2[]" value="yes"/> Sim
@@ -250,11 +256,13 @@
                                 <tr>
                                     <td>Bienal II</td>
                                     <td>
-                                        <input class="grade" type="number" min="0" max="200" name="exam3[]">
+                                        <input class="grade" type="number" min="0" max="200" value="0" name="exam3[]">
                                     </td>
                                     <td>
-                                        <input class="checker" type="checkbox" name="exam3[]">
-                                        <input class="grade" type="number" min="0" max="200" name="exam3[]" hidden>
+                                        <input class="checkerPhase2" type="checkbox" name="exam3[]">
+                                        <input class="grade" type="number" min="0" max="200" value="0" name="exam3[]" hidden>
+                                        <input type="checkbox" name="exam3[]" hidden>
+                                        <b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" class="small" data-original-title="Assinalar a caixa se o exame foi realizado em ano anterior ao ano de candidatura." hidden>(?)</b>
                                     </td>
                                     <td>
                                         <input type="radio" name="access3[]" value="yes"/> Sim
@@ -362,7 +370,7 @@
                             <h3>Cursos Gerais</h3>
                             <ul class="no-bullets">
                                 <p>
-                                <strong>Média de Ensino Secundário (<span class="internalScoreWeight"></span>%) </strong>
+                                <strong>Média do secundário (CFCEPE) (<span class="internalScoreWeight"></span>%) </strong>
                                 <ul>
                                     <li><strong>1ª Fase:</strong> <span id="internalScoreFirstPhase"></span> <i>pontos</i></li>
                                     <li><strong>2ª Fase:</strong> <span id="internalScoreSecondPhase"></span> <i>pontos</i></li>

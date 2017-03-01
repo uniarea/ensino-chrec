@@ -36,7 +36,7 @@ $(document).ready(function() {
 });
 
 
-//Calculate a unit's CIF (without exams)
+//Calculate a unit's CIF
 var calculateUnitInternalScore = function(index) {
     var values = $('input[name^=grade' + index + ']').map(function(idx, elem) {
         return parseInt($(elem).val());
@@ -59,11 +59,16 @@ var getUnitExams = function(index) {
     return values;
 }
 
-//Calculates all CIFs - returns an array with the results
-var calculateCIFs = function() {
-    var res = [];
-    for(var i = 0; i < 9; i++)
-        res.push(calculateUnitInternalScore(i));
+//Calculates grade in each mandatory exam for first and second phase
+var getMandatoryExams = function(index){
+  var totalExams = getUnitExams(index);
+
+  /* Test made: second phase exam done in year previous to current? Note that
+   * there's no need to test for second phase flag because if [3] is set, [1] MUST be set */
+  var firstPhase = (totalExams[3] ? Math.max(totalExams[0],totalExams[2]) : totalExams[0]);
+  var secondPhase = Math.max(firstPhase, totalExams[2]);
+  
+  return [firstPhase, secondPhase];
 }
 
 //Calculates CFD for the unit at 'index' - left it for readability purposes
@@ -89,44 +94,64 @@ var getAccessValues = function() {
     return res;
 }
 
-/* HAVEN'T CHANGED ANYTHING BELOW THIS LINE (YET) */
-
 //Calculate Internal Final Score - First and Second Phase - FOR SPORT COURSES
 var calculateInternalScoresSport = function() {
     var CFDs = calculateAllCFDs();
 
-    var firstPhase = 0;
-    var secondPhase = 0;
+    var total = 0;
 
-    for(var i = 0; i < 9; i++) {
-        firstPhase += CFDs[i][0];
-        secondPhase += CFDs[i][1];
-    }
+    for(var i = 0; i < 9; i++)
+        total += CFDs[i];
 
-    firstPhase = Math.trunc(firstPhase/9*10);
-    secondPhase = Math.trunc(secondPhase/9*10);
-
-    return [firstPhase, secondPhase];
+    return Math.trunc(total/9*10);
 }
 
 //Calculate Internal Final Score - First and Second Phase
 var calculateInternalScores = function() {
     var CFDs = calculateAllCFDs();
 
-    var firstPhase = 0;
-    var secondPhase = 0;
+    var total = 0;
 
     for(var i = 0; i < 9; i++) {
-        if(i != 3) { //All but Educação Física
-            firstPhase += CFDs[i][0];
-            secondPhase += CFDs[i][1];
-        }
+        if(i != 3) //All but Educação Física
+          total += CFDs[i];
     }
 
-    firstPhase = Math.trunc(firstPhase/8*10);
-    secondPhase = Math.trunc(secondPhase/8*10);
+    return Math.trunc(total/8*10);
+}
 
-    return [firstPhase, secondPhase];
+var calculateSpecificInternalScoresSports = function(){
+  var normalInternalScores = calculateInternalScoresSport();
+
+  var portugueseExams = getMandatoryExams(0);
+  var trienalExams = getMandatoryExams(1);
+  var bienalIExams = getMandatoryExams(2);
+  var bienalIIExams = getMandatoryExams(3);
+
+  var examsAverageFirstPhase = Math.round((portugueseExams[0]+trienalExams[0]+bienalIExams[0]+bienalIIExams[0])/4);
+  var examsAverageSecondPhase = Math.round((portugueseExams[1]+trienalExams[1]+bienalIExams[1]+bienalIIExams[1])/4);
+
+  var firstPhase = Math.round(0.7*normalInternalScores+0.3*examsAverageFirstPhase);
+  var secondPhase = Math.round(0.7*normalInternalScores+0.3*examsAverageSecondPhase);
+
+  return [firstPhase, secondPhase];
+}
+
+var calculateSpecificInternalScores = function(){
+  var normalInternalScores = calculateInternalScores();
+
+  var portugueseExams = getMandatoryExams(0);
+  var trienalExams = getMandatoryExams(1);
+  var bienalIExams = getMandatoryExams(2);
+  var bienalIIExams = getMandatoryExams(3);
+
+  var examsAverageFirstPhase = Math.round((portugueseExams[0]+trienalExams[0]+bienalIExams[0]+bienalIIExams[0])/4);
+  var examsAverageSecondPhase = Math.round((portugueseExams[1]+trienalExams[1]+bienalIExams[1]+bienalIIExams[1])/4);
+
+  var firstPhase = Math.round(0.7*normalInternalScores+0.3*examsAverageFirstPhase);
+  var secondPhase = Math.round(0.7*normalInternalScores+0.3*examsAverageSecondPhase);
+
+  return [firstPhase, secondPhase];
 }
 
 //Calculate access exams score
@@ -142,14 +167,8 @@ var calculateAccessScores = function() {
 
         if(accessValues[i] == 'yes') {
             counter++;
-            if(i < 9){ //Exams from main table
-              firstPhase += Math.max(currentExams[1], currentExams[6]); //Max First Phase Exam
-              secondPhase += Math.max(currentExams[1], currentExams[6], currentExams[3], currentExams[8]); //Max of all exams
-            }
-            else{ //Exams from second table (extra-exams)
-              firstPhase += currentExams[1]; //First Phase Exam
-              secondPhase += Math.max(currentExams[1], currentExams[3]); //Max of all exams
-            }
+            firstPhase += currentExams[1]; //First Phase Exam
+            secondPhase += Math.max(currentExams[1], currentExams[3]); //Max of all exams
         }
     }
     firstPhase = Math.trunc((firstPhase/counter)*10)/10;
@@ -164,7 +183,7 @@ var calculateFinalScore = function() {
     var internalScoreWeight = 1 - accessExamsWeight;
 
     var accessScores = calculateAccessScores();
-    var internalScores = calculateInternalScores();
+    var internalScores = calculateSpecificInternalScores();
 
     var firstPhase = (accessScores[0] * accessExamsWeight + internalScores[0] * internalScoreWeight).toPrecision(4);
     var secondPhase = (accessScores[1] * accessExamsWeight + internalScores[1] * internalScoreWeight).toPrecision(4);
@@ -178,13 +197,16 @@ var calculateFinalScoreSport = function() {
     var internalScoreWeight = 1 - accessExamsWeight;
 
     var accessScores = calculateAccessScores();
-    var internalScores = calculateInternalScoresSport();
+    var internalScores = calculateSpecificInternalScoresSports();
 
     var firstPhase = (accessScores[0] * accessExamsWeight + internalScores[0] * internalScoreWeight).toPrecision(4);
     var secondPhase = (accessScores[1] * accessExamsWeight + internalScores[1] * internalScoreWeight).toPrecision(4);
 
     return [firstPhase, secondPhase];
 }
+
+/* HAVEN'T CHANGED ANYTHING BELOW THIS LINE
+  TODO: ADJUST INPUT VERIFICATION */
 
 //Verify input
 var verifyInput = function() {
