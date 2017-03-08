@@ -167,8 +167,8 @@ var calculateAccessScores = function() {
 
         if(accessValues[i] == 'yes') {
             counter++;
-            firstPhase += currentExams[1]; //First Phase Exam
-            secondPhase += Math.max(currentExams[1], currentExams[3]); //Max of all exams
+            firstPhase += currentExams[0]; //First Phase Exam
+            secondPhase += Math.max(currentExams[0], currentExams[2]); //Max of all exams
         }
     }
     firstPhase = Math.trunc((firstPhase/counter)*10)/10;
