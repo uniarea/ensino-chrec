@@ -103,6 +103,7 @@
             <h2>Instruções</h2>
             <p>
             <ol>
+                <li>Escolhe o curso que frequentaste e ajusta o nome das disciplinas bienais e anuais para maior facilidade de compreensão.</li>
                 <li>Introduz a informação relativa às tuas notas nas disciplinas (0-20) e exames (0-200) e quais as provas de ingresso do curso que te pretendes candidatar.</li>
                 <li>Depois de preencheres tudo, carrega em <strong>Calcular</strong> e serão mostrados os teus resultados.</li>
                 <li><i>Opcional:</i> Grava o teu resultado carregando em <strong>Guardar</strong> e este será transferido como um ficheiro de texto.</li>
@@ -125,6 +126,25 @@
 
             <table class="table table-striped">
                 <thead>
+                    <tr>
+                        <th>
+                          <select id="curso">
+                            <option class="genericOption" disabled selected value>Curso Frequentado</option>
+                            <option>Ciências e Tecnologias</option>
+                            <option>Ciências Socioeconómicas</option>
+                            <option>Artes Visuais</option>
+                            <option>Línguas e Humanidades</option>
+                          </select>
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
                     <tr>
                         <th>Disciplina</th>
                         <th>10º Ano</th>
@@ -158,31 +178,62 @@
                         <td><input class="grade" min="1" max="20" type="number" name="grade3[]" value="10"/></td>
                     </tr>
                     <tr>
+                        <!--
                         <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="A disciplina de três anos específica de cada curso. Exemplos: Matemática A, História A, Desenho A"><sup>(?)</sup></b>Trienal Específica</td>
+                      -->
+                        <td id="trienal"><i>Nome Trienal Específica</i></td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade4[]" value="10"/></td>
                     </tr>
                     <tr>
+                        <!--
                         <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de dois anos específica de cada curso. Exemplos: Físico-Química A, Economia A, Geografia"><sup>(?)</sup></b>Bienal 1</td>
+                      -->
+                        <td>
+                          <select id="bienal1">
+                            <option disabled selected value>Nome Bienal Específica I</option>
+                          </select>
+                        </td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade5[]" value="10"/></td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade5[]" value="10"/></td>
                         <td></td>
                     </tr>
                     <tr>
+                        <!--
                         <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de dois anos específica de cada curso. Exemplos: Biologia e Geologia, Geometria Descritiva, MACS, Literatura"><sup>(?)</sup></b>Bienal 2</td>
+                      -->
+                        <td>
+                          <select id="bienal2">
+                            <option disabled selected value>Nome Bienal Específica I</option>
+                          </select>
+                        </td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade6[]" value="10"/></td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade6[]" value="10"/></td>
                         <td></td>
                     </tr>
                     <tr>
+                        <!--
                         <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="Uma das disciplinas de último ano específica de cada curso. Exemplos: Biologia, Física, Aplicações Informáticas B, Psicologia, Sociologia, Geologia"><sup>(?)</sup></b>Opção 1</td>
+                      -->
+                        <td>
+                          <select id="anual1">
+                            <option disabled selected value>Nome Anual I</option>
+                          </select>
+                        </td>
                         <td></td>
                         <td></td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade7[]" value="10"/></td>
                     </tr>
                     <tr>
+                        <!--
                         <td><b href="#" data-placement="right" data-toggle="tooltip" role="help" title="" data-original-title="A segunda disciplina de último ano específica de cada curso. Exemplos: Biologia, Física, Aplicações Informáticas B, Psicologia, Sociologia, Geologia"><sup>(?)</sup></b>Opção 2</td>
+                      -->
+                        <td>
+                          <select id="anual2">
+                            <option disabled selected value>Nome Anual II</option>
+                          </select>
+                        </td>
                         <td></td>
                         <td></td>
                         <td><input class="grade" min="1" max="20" type="number" name="grade8[]" value="10"/></td>

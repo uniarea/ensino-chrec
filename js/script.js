@@ -14,6 +14,16 @@ clipboard.on('error', function(e) {
   console.log(e);
 });
 
+var bienaisCT = ['Física e Química A', 'Biologia e Geologia', 'Geometria Descritiva A'];
+var bienaisCSC = ['Economia A', 'Geografia A', 'História B'];
+var bienaisAV = ['Geometria Descritiva A', 'Matemática B', 'História da Cultura e das Artes'];
+var bienaisLH = ['Geografia A', 'MACS', 'Latim A', 'Língua Estrangeira', 'Literatura Portuguesa'];
+
+var anuaisCT = ['Biologia', 'Física', 'Geologia', 'Química', 'Antropologia', 'Aplicações Informáticas B', 'Ciência Política', 'Clássicos de Literatura', 'Direito', 'Economia C', 'Filosofia A', 'Grego', 'Geografia C', 'Língua Estrangeira', 'Psicologia B'];
+var anuaisCSC = ['Economia C', 'Geografia C', 'Sociologia', 'Química', 'Antropologia', 'Aplicações Informáticas B', 'Ciência Política', 'Clássicos de Literatura', 'Direito', 'Filosofia A', 'Grego', 'Língua Estrangeira', 'Psicologia B'];
+var anuaisAV = ['Oficina de Artes', 'Oficina de Multimédia B', 'Materiais e Tecnologias', 'Antropologia', 'Aplicações Informáticas B', 'Ciência Política', 'Clássicos de Literatura', 'Direito', 'Economia C', 'Filosofia A', 'Grego', 'Geografia C', 'Língua Estrangeira', 'Psicologia B'];
+var anuaisLH = ['Filosofia A', 'Geografia C', 'Latim B', 'Língua Estrangeira', 'Literatura de Língua Portuguesa', 'Psicologia B', 'Sociologia', 'Antropologia', 'Aplicações Informáticas B', 'Ciência Política', 'Clássicos de Literatura', 'Direito', 'Economia C', 'Grego'];
+
 
 $(document).ready(function() {
 
@@ -31,10 +41,60 @@ $(document).ready(function() {
         $(this).next().next().next().toggle();
     });
 
+    $("#curso").change(function(){
+       updateSelectBoxes($(this).val());
+    });
+
     //Bootstap's tooltip
     $('[data-toggle="tooltip"]').tooltip();
 });
 
+var updateSelectBoxes = function(name) {
+    var bienais, anuais;
+    switch(name){
+      case 'Ciências e Tecnologias':
+        $("#trienal").html("Matemática A");
+        bienais = bienaisCT;
+        anuais = anuaisCT;
+        break;
+      case 'Ciências Socioeconómicas':
+        $("#trienal").html("Matemática A");
+        bienais = bienaisCSC;
+        anuais = anuaisCSC;
+        break;
+      case 'Artes Visuais':
+        $("#trienal").html("Desenho A");
+        bienais = bienaisAV;
+        anuais = anuaisAV;
+        break;
+      case 'Línguas e Humanidades':
+        $("#trienal").html("História A");
+        bienais = bienaisLH;
+        anuais = anuaisLH;
+    }
+
+    //$("#bienal1").empty();
+    //$("#bienal2").empty();
+    var newbienalI = '<option class=\'genericOption\' disabled selected value>Nome Bienal Específica I</option>';
+    var newbienalII = '<option class=\'genericOption\' disabled selected value>Nome Bienal Específica II</option>';
+    for(let i = 0; i < bienais.length; i++){
+      newbienalI += '<option>'+bienais[i]+'</option>';
+      newbienalII += '<option>'+bienais[i]+'</option>';
+    }
+    $("#bienal1").html(newbienalI);
+    $("#bienal2").html(newbienalII);
+
+    //$("#anual1").empty();
+    //$("#anual2").empty();
+    var newanualI = '<option class=\'genericOption\' disabled selected value>Nome Anual I</option>';
+    var newanualII = '<option class=\'genericOption\' disabled selected value>Nome Anual II</option>';
+    for(let i = 0; i < anuais.length; i++){
+      newanualI += '<option>'+anuais[i]+'</option>';
+      newanualII += '<option>'+anuais[i]+'</option>';
+    }
+    $("#anual1").html(newanualI);
+    $("#anual2").html(newanualII);
+}
 
 //Calculate a unit's CIF
 var calculateUnitInternalScore = function(index) {
