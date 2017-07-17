@@ -84,16 +84,11 @@ var updateSelectBoxes = function(name) {
     $("#bienal1").html(newbienalI);
     $("#bienal2").html(newbienalII);
 
-    //$("#anual1").empty();
-    //$("#anual2").empty();
-    var newanualI = '<option class=\'genericOption\' disabled selected value>Nome Anual I</option>';
-    var newanualII = '<option class=\'genericOption\' disabled selected value>Nome Anual II</option>';
-    for(let i = 0; i < anuais.length; i++){
+    //$("#anual").empty();
+    var newanual = '<option class=\'genericOption\' disabled selected value>Nome Anual I</option>';
+    for(let i = 0; i < anuais.length; i++)
       newanualI += '<option>'+anuais[i]+'</option>';
-      newanualII += '<option>'+anuais[i]+'</option>';
-    }
-    $("#anual1").html(newanualI);
-    $("#anual2").html(newanualII);
+    $("#anual").html(newanual);
 }
 
 //Calculate a unit's CIF
@@ -139,7 +134,7 @@ var calculateCFD = function(index) {
 //Calculates all CFDs
 var calculateAllCFDs = function() {
     var res = [];
-    for(var i = 0; i < 9; i++)
+    for(var i = 0; i < 8; i++)
         res.push(calculateCFD(i));
     return res;
 }
@@ -160,7 +155,7 @@ var calculateInternalScoresSport = function() {
 
     var total = 0;
 
-    for(var i = 0; i < 9; i++)
+    for(var i = 0; i < 8; i++)
         total += CFDs[i];
 
     return Math.trunc(total/9*10);
@@ -172,7 +167,7 @@ var calculateInternalScores = function() {
 
     var total = 0;
 
-    for(var i = 0; i < 9; i++) {
+    for(var i = 0; i < 8; i++) {
         if(i != 3) //All but Educação Física
           total += CFDs[i];
     }
@@ -278,7 +273,7 @@ var verifyInput = function() {
     var accessValues = getAccessValues();
 
     //Get unit's and exams' values
-    for(var i = 0; i < 9; i++) {
+    for(var i = 0; i < 8; i++) {
         units.push($('input[name^=grade' + i + ']').map(function(idx, elem) {
             return parseInt($(elem).val());
         }).get());
@@ -303,7 +298,7 @@ var verifyInput = function() {
     var errors = "";
 
     // 19 and 14 -> number of input boxes
-    if(units.length != 19) {
+    if(units.length != 18) {
         hasError = true;
        errors += "<li>Há pelo menos uma nota de disciplina com um valor inválido.</li>";
     }
@@ -371,7 +366,7 @@ var displayScores = function() {
 var saveScores = function(){
     var results = "CFDs - Classificações Finais das Disciplinas:\r\n";
     var cfds = calculateAllCFDs();
-    var subjects = ["Português", "Filosofia", "Língua Estrangeira", "Educação Física", "Trienal Específica", "Bienal I", "Bienal II", "Anual I", "Anual II"];
+    var subjects = ["Português", "Filosofia", "Língua Estrangeira", "Educação Física", "Trienal Específica", "Bienal I", "Bienal II", "Anual"];
     //CFDs
     for(var i = 0; i < subjects.length; i++){
         results += subjects[i] + ": " + cfds[i] + "\r\n";
