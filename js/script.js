@@ -392,8 +392,8 @@ var saveScores = function(){
     results += "--------------------\r\n";
     for(var k = 0; k < 2; k++){
         results += k+1 + "ª Fase:\r\n";
-        results += "Cursos Área Desporto: " + finalscores[k] + "\r\n";
-        results += "Cursos Restantes Áreas: " + finalscoresport[k] + "\r\n\r\n";
+        results += "Cursos Área Desporto: " + finalscoresport[k] + "\r\n";
+        results += "Cursos Restantes Áreas: " + finalscores[k] + "\r\n\r\n";
     }
     results += "Obrigado por utilizares o nosso simulador!\r\nhttps://uniarea.github.io/";
     //Actually save data in resultados.txt
