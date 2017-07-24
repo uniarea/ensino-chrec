@@ -186,8 +186,8 @@ var calculateSpecificInternalScoresSports = function(){
   var examsAverageFirstPhase = Math.round((portugueseExams[0]+trienalExams[0]+bienalIExams[0]+bienalIIExams[0])/4);
   var examsAverageSecondPhase = Math.round((portugueseExams[1]+trienalExams[1]+bienalIExams[1]+bienalIIExams[1])/4);
 
-  var firstPhase = Math.round(0.7*normalInternalScores+0.3*examsAverageFirstPhase);
-  var secondPhase = Math.round(0.7*normalInternalScores+0.3*examsAverageSecondPhase);
+  var firstPhase = Math.round((7*normalInternalScores+3*examsAverageFirstPhase)/10);
+  var secondPhase = Math.round((7*normalInternalScores+3*examsAverageSecondPhase)/10);
 
   return [firstPhase, secondPhase];
 }
@@ -203,8 +203,8 @@ var calculateSpecificInternalScores = function(){
   var examsAverageFirstPhase = Math.round((portugueseExams[0]+trienalExams[0]+bienalIExams[0]+bienalIIExams[0])/4);
   var examsAverageSecondPhase = Math.round((portugueseExams[1]+trienalExams[1]+bienalIExams[1]+bienalIIExams[1])/4);
 
-  var firstPhase = Math.round(0.7*normalInternalScores+0.3*examsAverageFirstPhase);
-  var secondPhase = Math.round(0.7*normalInternalScores+0.3*examsAverageSecondPhase);
+  var firstPhase = Math.round((7*normalInternalScores+3*examsAverageFirstPhase)/10);
+  var secondPhase = Math.round((7*normalInternalScores+3*examsAverageSecondPhase)/10);
 
   return [firstPhase, secondPhase];
 }
