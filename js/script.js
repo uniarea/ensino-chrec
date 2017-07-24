@@ -158,7 +158,7 @@ var calculateInternalScoresSport = function() {
     for(var i = 0; i < 8; i++)
         total += CFDs[i];
 
-    return Math.trunc(total/9*10);
+    return Math.trunc(total/8*10);
 }
 
 //Calculate Internal Final Score - First and Second Phase
@@ -172,7 +172,7 @@ var calculateInternalScores = function() {
           total += CFDs[i];
     }
 
-    return Math.trunc(total/8*10);
+    return Math.trunc(total/7*10);
 }
 
 var calculateSpecificInternalScoresSports = function(){
