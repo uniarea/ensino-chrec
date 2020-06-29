@@ -144,7 +144,7 @@ var getAccessValues = function() {
     var res = [];
     var current = "";
 
-    for(var i = 0; i < 7; i++)
+    for(var i = 4; i < 7; i++)
         res.push($('input[name^=access' + i + ']:checked').val());
     return res;
 }
@@ -189,7 +189,8 @@ var calculateSpecificInternalScoresSports = function(){
   var firstPhase = Math.round((7*normalInternalScores+3*examsAverageFirstPhase)/10);
   var secondPhase = Math.round((7*normalInternalScores+3*examsAverageSecondPhase)/10);
 
-  return [firstPhase, secondPhase];
+  //return [firstPhase, secondPhase];
+  return [normalInternalScores, normalInternalScores];
 }
 
 var calculateSpecificInternalScores = function(){
@@ -206,7 +207,8 @@ var calculateSpecificInternalScores = function(){
   var firstPhase = Math.round((7*normalInternalScores+3*examsAverageFirstPhase)/10);
   var secondPhase = Math.round((7*normalInternalScores+3*examsAverageSecondPhase)/10);
 
-  return [firstPhase, secondPhase];
+  //return [firstPhase, secondPhase];
+  return [normalInternalScores, normalInternalScores];
 }
 
 //Calculate access exams score
@@ -218,12 +220,14 @@ var calculateAccessScores = function() {
     var counter = 0;
 
     for(var i = 0; i < accessValues.length; i++) {
-        var currentExams = getUnitExams(i);
+        var currentExams = getUnitExams(4+i);
 
+        console.log(currentExams);
+        console.log(accessValues[i]);
         if(accessValues[i] == 'yes') {
             counter++;
-            firstPhase += currentExams[0]; //First Phase Exam
-            secondPhase += Math.max(currentExams[0], currentExams[2]); //Max of all exams
+            firstPhase += currentExams[1]; //First Phase Exam
+            secondPhase += Math.max(currentExams[1], currentExams[3]); //Max of all exams
         }
     }
     firstPhase = Math.trunc((firstPhase/counter)*10)/10;
@@ -278,7 +282,7 @@ var verifyInput = function() {
             return parseInt($(elem).val());
         }).get());
 
-        if(i < 7)
+        if(i > 3 && i < 7)
           exams.push(getUnitExams(i));
     }
 
@@ -303,8 +307,8 @@ var verifyInput = function() {
        errors += "<li>Há pelo menos uma nota de disciplina com um valor inválido.</li>";
     }
 
-    if(exams.length != 14) {
-        console.log(exams.length);
+    if(exams.length != 6) {
+        console.log("WTF"+exams.length);
         hasError = true;
        errors += "<li>Há pelo menos uma nota de exame com um valor inválido.</li>";
     }
